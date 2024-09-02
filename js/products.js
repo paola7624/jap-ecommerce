@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         </div>
                         <div class="product-price">
                             ${product.currency} ${product.cost}
-                        </div>
-                    `;
+                        </div>`;
 
                     container.appendChild(productItem);
                 });
@@ -45,12 +44,15 @@ document.addEventListener("DOMContentLoaded", function() {
             productList.classList.remove('grid-view');
         }
 
-        gridViewButton.addEventListener('click', switchToGridView);
-        listViewButton.addEventListener('click', switchToListView);
+        if (gridViewButton && listViewButton) {
+            gridViewButton.addEventListener('click', switchToGridView);
+            listViewButton.addEventListener('click', switchToListView);
+        } else {
+            console.error('Botones de vista no encontrados');
+        }
     }
 
     // Llamar a las funciones
     loadProducts();
     setupViewButtons();
 });
-
